@@ -1,19 +1,36 @@
 """
-Name: (put your name here)
+Name: Susannah Winfeld - I've asked for an extension so this is just a rough draft
 Peers: (add any collaborators)
-References: (anything you checked to solve this)
+References: https://www.w3schools.com/python/ref_string_isdigit.asp
 """
 
 # imported modules
-import statistics # let's us use mean, median, mode
+import statistics # lets us use mean, median, mode
 
 # This is a global variable (seen by all local scopes)
 grades = [0,0,0,0,0] # initialized with five zeros
-
 # Task 1:
 #  Complete the function "read_five_ints" below:
 def read_five_ints():
-    """ updates content of grades depending on the user's input
+    for i in range(len(grades)):
+        user_input = input("Give me the next grade in [0 to 10]: ")
+        if user_input.isdigit() == False:
+            while user_input.isdigit() == False :
+                print("Error in read_five_ints: input string is not for an integer")
+                user_input = input("Give me the next grade in [0 to 10]: ")
+            user_input = int(user_input)
+        else :
+            user_input = int(user_input)
+            while user_input not in range(10) :
+                print("Error in read_five_ints: input integer outside of range")
+                user_input = input("Give me the next grade in [0 to 10]: ")
+        grades[i] = user_input
+        print(grades)
+    return grades
+    
+     
+"""
+updates content of grades depending on the user's input
 
     Updates the values inside the global variable grades (list)
     with each of the user's 5 input ints.
@@ -22,14 +39,14 @@ def read_five_ints():
     and if the input converted to int is outside of [0,10], prints
     "Error in read_five_ints: input integer outside of range".
     """
-    for idx in range ( len(grades) ):
+
+
         # for each idx in 0, 1,... 4 do:
         # check if the input is not a digit print error
         # convert to int
         # check if the int is not in the interval [0 to 10] print error
         # add the int to grades at index idx
 
-        pass
 
     #Anything with this indentation is NO LONGER inside the loop
 
@@ -100,3 +117,4 @@ def main ():
 # Do not modify these two lines
 if __name__ == "__main__":
     main()
+
